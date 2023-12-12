@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+
+members = [
+    "cargo-genezio",
+    "genezio"
+]
+
+default-members = [
+    "cargo-genezio"
+]
