@@ -9,8 +9,7 @@ mod metadata;
 mod options;
 
 #[derive(Debug, Parser)]
-#[command(name = "cargo")]
-#[command(bin_name = "cargo")]
+#[clap(name = "cargo-genezio", version)]
 pub struct App {
     #[clap(flatten)]
     global_opts: GlobalOptions,

@@ -8,6 +8,8 @@ mod doctor;
 mod new;
 
 #[derive(Debug, Subcommand)]
+#[command(name = "cargo")]
+#[command(bin_name = "cargo")]
 pub enum Command {
     /// Create a new project
     New(new::NewArgs),
