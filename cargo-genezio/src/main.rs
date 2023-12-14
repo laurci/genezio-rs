@@ -8,20 +8,10 @@ mod cmd;
 mod metadata;
 mod options;
 
-#[derive(Debug, Parser)]
-#[clap(name = "cargo-genezio", version)]
-pub struct App {
-    #[clap(flatten)]
-    global_opts: GlobalOptions,
-
-    #[clap(subcommand)]
-    command: Command,
-}
-
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let app = App::parse();
+    let app = Command::parse();
 
-    if let Err(e) = app.command.run(&app.global_opts) {
+    if let Err(e) = app.run(&GlobalOptions {}) {
         eprintln!("{}", e.to_string().red());
 
         std::process::exit(1);
