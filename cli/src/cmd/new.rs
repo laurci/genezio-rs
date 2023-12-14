@@ -52,7 +52,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-genezio = {{ path = "../genezio-rs/genezio" }}
+genezio = {{ git = "https://github.com/laurci/genezio-rs.git" }}
 "#
         )
         .trim(),
