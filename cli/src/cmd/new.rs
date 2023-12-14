@@ -138,6 +138,8 @@ fn print_help(name: &str) {
 
 fn normalize_name_to_path(name: &str) -> String {
     let name = name
+        .replace("-", " ")
+        .replace("_", " ")
         .chars()
         .filter(|x| x.is_alphanumeric() || *x == ' ')
         .collect::<String>();
