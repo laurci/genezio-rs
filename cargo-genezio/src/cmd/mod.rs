@@ -1,4 +1,4 @@
-use clap::Parser;
+use clap::Subcommand;
 
 use crate::options::GlobalOptions;
 
@@ -7,9 +7,7 @@ mod deploy;
 mod doctor;
 mod new;
 
-#[derive(Debug, Parser)]
-#[command(name = "cargo")]
-#[command(bin_name = "cargo")]
+#[derive(Debug, Subcommand)]
 pub enum Command {
     /// Create a new project
     New(new::NewArgs),
