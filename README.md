@@ -1,6 +1,6 @@
 # genezio-rs
 
-Get Rust running on [Genezio](https://genez.io) as a backend language.
+Get Rust running on [Genezio](https://genez.io) as a backend language. Read more about the making of this project [on my blog](https://blog.ciobanu.dev/posts/genezio-rs).
 
 ## Getting started!
 
