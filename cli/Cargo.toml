@@ -1,7 +1,11 @@
 [package]
-name = "cargo-genezio"
+name = "cli"
 version = "0.1.0"
 edition = "2021"
+
+[[bin]]
+name = "genezio-rs"
+path = "src/main.rs"
 
 [dependencies]
 base64 = "0.21.5"

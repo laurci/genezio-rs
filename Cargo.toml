@@ -2,11 +2,11 @@
 resolver = "2"
 
 members = [
-    "cargo-genezio",
+    "cli",
     "meta",
     "genezio",
 ]
 
 default-members = [
-    "cargo-genezio"
+    "cli"
 ]
