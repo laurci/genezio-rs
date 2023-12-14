@@ -29,6 +29,7 @@ fn check_unix_based_os() -> Result<(), DoctorError> {
 
 fn check_rustup() -> Result<(), DoctorError> {
     let status = Command::new("rustup")
+        .arg("--version")
         .stdout(std::process::Stdio::null())
         .stderr(std::process::Stdio::null())
         .status()
@@ -45,6 +46,7 @@ fn check_rustup() -> Result<(), DoctorError> {
 
 fn check_cargo() -> Result<(), DoctorError> {
     let status = Command::new("cargo")
+        .arg("--version")
         .stdout(std::process::Stdio::null())
         .stderr(std::process::Stdio::null())
         .status()
@@ -81,6 +83,7 @@ fn check_rustup_aarch64_musl_target() -> Result<(), DoctorError> {
 
 fn check_gnu_aarch64_musl_toolchain() -> Result<(), DoctorError> {
     let status = Command::new("aarch64-linux-musl-gcc")
+        .arg("--version")
         .stdout(std::process::Stdio::null())
         .stderr(std::process::Stdio::null())
         .status()

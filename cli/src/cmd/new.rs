@@ -134,6 +134,8 @@ fn print_help(name: &str) {
     println!("\nTo get started, run:");
     println!("cd ./{}", name);
     println!("genezio-rs deploy");
+
+    println!("\nThen check your project in the genezio dashboard.");
 }
 
 fn normalize_name_to_path(name: &str) -> String {
