@@ -2,22 +2,33 @@ use clap::Subcommand;
 
 use crate::options::GlobalOptions;
 
-mod read;
-mod write;
+mod build;
+mod deploy;
+mod doctor;
+mod new;
 
 #[derive(Debug, Subcommand)]
 pub enum Command {
-    /// Help message for read.
-    Read(read::ReadArgs),
-    /// Help message for write.
-    Write(write::WriteArgs),
+    /// Create a new project
+    New(new::NewArgs),
+
+    /// Build the project
+    Build(build::BuildArgs),
+
+    /// Deploy the project to genezio
+    Deploy(deploy::DeployArgs),
+
+    /// Verify all dependencies
+    Doctor(doctor::DoctorArgs),
 }
 
 impl Command {
-    pub fn run(&self, global_opts: &GlobalOptions) {
+    pub fn run(&self, global_opts: &GlobalOptions) -> Result<(), Box<dyn std::error::Error>> {
         match self {
-            Command::Read(args) => read::run_read(global_opts, args),
-            Command::Write(args) => write::run_write(global_opts, args),
+            Command::New(args) => new::run_new(global_opts, args).map_err(|e| e.into()),
+            Command::Build(args) => build::run_build(global_opts, args).map_err(|e| e.into()),
+            Command::Deploy(args) => deploy::run_deploy(global_opts, args).map_err(|e| e.into()),
+            Command::Doctor(args) => doctor::run_doctor(global_opts, args).map_err(|e| e.into()),
         }
     }
 }

@@ -3,7 +3,8 @@ resolver = "2"
 
 members = [
     "cargo-genezio",
-    "genezio"
+    "meta",
+    "genezio",
 ]
 
 default-members = [
