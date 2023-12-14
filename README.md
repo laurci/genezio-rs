@@ -40,7 +40,7 @@ This is a bit more tricky. If you want to know what it means, read [this](#cross
 
 ### `genezio-rs doctor` says it can't find `genezio`
 
-That's easy. Make sure you have `genezio` installed and in your `PATH` environment variable. You can install it using `npm install -g genezio`. If you don't know what I'm talking about, go to [genezio.io](https://genezio.io) and follow the instructions there.
+That's easy. Make sure you have `genezio` installed and in your `PATH` environment variable. You can install it using `npm install -g genezio`. If you don't know what I'm talking about, go to [genez.io](https://genez.io) and follow the instructions there.
 
 ## Genezio cloud
 
