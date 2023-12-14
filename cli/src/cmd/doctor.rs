@@ -10,9 +10,8 @@ const HELP_CARGO: &'static str =
 const HELP_RUSTUP_AARCH64_MUSL_TARGET: &'static str =
     "make sure you have the target available.\ninsall it with: `rustup target add aarch64-unknown-linux-musl`";
 
-const HELP_LINUX_GNU_AARCH64_MUSL_TOOLCHAIN: &'static str =
-    "make sure you have the toolchain installed. more help here: https://github.com/laurci/genezio-rs#linux-gnu-aarch64-musl";
-const HELP_MACOS_GNU_AARCH64_MUSL_TOOLCHAIN: &'static str = "make sure you have the toolchain installed. more help here https://github.com/laurci/genezio-rs#macos-gnu-aarch64-musl";
+const HELP_GNU_AARCH64_MUSL_TOOLCHAIN: &'static str =
+    "make sure you have the toolchain installed. more help here: https://github.com/laurci/genezio-rs";
 
 const HELP_GENEZIO: &'static str = "make sure you have genezio installed: https://genez.io/";
 
@@ -82,7 +81,7 @@ fn check_rustup_aarch64_musl_target() -> Result<(), DoctorError> {
 }
 
 fn check_gnu_aarch64_musl_toolchain() -> Result<(), DoctorError> {
-    let status = Command::new("aarch64-linux-musl-gcc")
+    let status = Command::new("aarch64-linux-musl-gnu")
         .arg("--version")
         .stdout(std::process::Stdio::null())
         .stderr(std::process::Stdio::null())
@@ -93,7 +92,7 @@ fn check_gnu_aarch64_musl_toolchain() -> Result<(), DoctorError> {
         return Err(DoctorError::GnuAarch64MuslToolchain);
     }
 
-    println!("toolchain aarch64-linux-musl-gcc: ok");
+    println!("toolchain aarch64-linux-musl-gnu: ok");
 
     Ok(())
 }
@@ -152,11 +151,8 @@ impl Display for DoctorError {
                     HELP_RUSTUP_AARCH64_MUSL_TARGET
                 ),
                 DoctorError::GnuAarch64MuslToolchain => format!(
-                    "aarch64-linux-musl-gcc toolchain not found.\nHELP: {}",
-                    match cfg!(target_os = "linux") {
-                        true => HELP_LINUX_GNU_AARCH64_MUSL_TOOLCHAIN,
-                        false => HELP_MACOS_GNU_AARCH64_MUSL_TOOLCHAIN,
-                    }
+                    "aarch64-linux-musl-gnu toolchain not found.\nHELP: {}",
+                    HELP_GNU_AARCH64_MUSL_TOOLCHAIN
                 ),
                 DoctorError::Genezio => format!("genezio not found.\nHELP: {}", HELP_GENEZIO),
             }
