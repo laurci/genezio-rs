@@ -133,7 +133,7 @@ fn print_help(name: &str) {
     println!("Your project is ready!");
     println!("\nTo get started, run:");
     println!("cd ./{}", name);
-    println!("cargo genezio deploy");
+    println!("genezio-rs deploy");
 }
 
 fn normalize_name_to_path(name: &str) -> String {
