@@ -44,7 +44,7 @@ That's easy. Make sure you have `genezio` installed and in your `PATH` environme
 
 ## Genezio cloud
 
-If you want to deploy your project to the Genezio cloud (if not, why are you reading this?), you will need to have a Genezio Account and be logged in with the Genezio CLI. You can use `genezio login` to log in; [more here] (https://docs.genez.io/genezio-documentation/cli-tool/cli-commands/login). Then check you are logged in using `genezio account`; [more here](https://docs.genez.io/genezio-documentation/cli-tool/cli-commands/account).
+If you want to deploy your project to the Genezio cloud (if not, why are you reading this?), you will need to have a Genezio Account and be logged in with the Genezio CLI. You can use `genezio login` to log in; [more here](https://docs.genez.io/genezio-documentation/cli-tool/cli-commands/login). Then check you are logged in using `genezio account`; [more here](https://docs.genez.io/genezio-documentation/cli-tool/cli-commands/account).
 
 ## Cross-compilation
 
