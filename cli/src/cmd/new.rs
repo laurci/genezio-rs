@@ -8,6 +8,38 @@ pub struct NewArgs {
     pub name: String,
 }
 
+fn write_readme(path: &PathBuf, name: &str) -> Result<(), NewError> {
+    fs::write(
+        path,
+        format!(
+            r#"
+# {name}
+
+Welcome to your brand new [genezio-rs](https://github.com/laurci/genezio-rs) project.
+
+## Running & Deployment
+
+To locally run this project you can just use `cargo run`.
+
+To deploy this to [Genezio](https://genez.io) use `genezio-rs delpoy`. Make sure you are logged in the Genezio CLI with your account. You can check this by running `genezio account`.
+
+After deployment you will get an HTTP API powered by `axum` at the `/` path of your service Lambda URL.
+
+To get this URL go to the Genezio dashboard and click on your project, then click on the `Test Project` button. You will see the URL there (with some text like `Requests will be sent to https://.....`). It won't change between deploys, so you only need to do this step once.
+
+## Doctor
+
+If you have problems with any of the above, try running `genezio-rs doctor` in the project directory. Learn more about this [here](https://github.com/laurci/genezio-rs).
+
+"#
+        )
+        .trim(),
+    )
+    .map_err(|_| NewError("can't write README.md".into()))?;
+
+    Ok(())
+}
+
 fn write_gitignore(path: &PathBuf) -> Result<(), NewError> {
     fs::write(
         path,
@@ -102,11 +134,13 @@ fn write_files(target_dir: &PathBuf, name: &str) -> Result<(), NewError> {
     let src_dir = target_dir.join("src");
     std::fs::create_dir_all(&src_dir).map_err(|_| NewError("can't create src dir".into()))?;
 
+    let readme = target_dir.join("README.md");
     let gitignore = target_dir.join(".gitignore");
     let genezio_yaml = target_dir.join("genezio.yaml");
     let cargo_toml = target_dir.join("Cargo.toml");
     let main_rs = src_dir.join("main.rs");
 
+    write_readme(&readme, &name)?;
     write_gitignore(&gitignore)?;
     write_genezio_yaml(&genezio_yaml, &name)?;
     write_cargo_toml(&cargo_toml, &name)?;
