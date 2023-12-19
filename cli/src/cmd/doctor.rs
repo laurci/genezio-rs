@@ -81,7 +81,7 @@ fn check_rustup_aarch64_musl_target() -> Result<(), DoctorError> {
 }
 
 fn check_gnu_aarch64_musl_toolchain() -> Result<(), DoctorError> {
-    let status = Command::new("aarch64-linux-musl-gnu")
+    let status = Command::new("aarch64-linux-gnu-gcc")
         .arg("--version")
         .stdout(std::process::Stdio::null())
         .stderr(std::process::Stdio::null())
